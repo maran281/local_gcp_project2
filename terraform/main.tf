@@ -2,9 +2,10 @@
 
 ######################## Access SA key ########################
 provider "google" {
-    project = var.gcp_project
-    region = var.gcp_region
-    credentials = file("./cla-poc-key.json")
+    project = "macro-deck-357611"
+    region = "europe-west1"
+    # credentials = file("./cla-poc-key.json")
+    credentials = file("C:/gcp_poc/key/cla-poc-key.json")
 } 
 
 ######################### Bucket Creation #########################
@@ -17,6 +18,7 @@ resource "google_storage_bucket" "inbound-bucket" {
   versioning {
     enabled = true
   }
+  # service_account_email = "cla-serviceaccount-manoj1@macro-deck-357611.iam.gserviceaccount.com"
 }
 
 resource "google_storage_bucket" "archived-bucket" {
@@ -28,6 +30,7 @@ resource "google_storage_bucket" "archived-bucket" {
   versioning {
     enabled = true
   }
+  # service_account_email = "cla-serviceaccount-manoj1@macro-deck-357611.iam.gserviceaccount.com"
 }
 
 resource "google_storage_bucket" "errored-bucket" {
@@ -40,6 +43,7 @@ resource "google_storage_bucket" "errored-bucket" {
     enabled = true
   }
   #member        = "cla-serviceaccount-manoj1@macro-deck-357611.iam.gserviceaccount.com"
+  # service_account_email = "cla-serviceaccount-manoj1@macro-deck-357611.iam.gserviceaccount.com"
 }
 
 # resource "google_storage_bucket" "fn-bucket" {
