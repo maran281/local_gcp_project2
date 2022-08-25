@@ -1,12 +1,12 @@
 #  # main declarations of the environment. #
 
 ######################## Access SA key ########################
-provider "google" {
-    project = "macro-deck-357611"
-    region = "europe-west1"
-    # credentials = file("./cla-poc-key.json")
-    credentials = file("C:/gcp_poc/key/cla-poc-key.json")
-} 
+# provider "google" {
+#     project = "macro-deck-357611"
+#     region = "europe-west1"
+#     credentials = file("./cla-poc-key.json")
+#     # credentials = file("C:/gcp_poc/key/cla-poc-key.json")
+# } 
 
 ######################### Bucket Creation #########################
 resource "google_storage_bucket" "inbound-bucket" {
