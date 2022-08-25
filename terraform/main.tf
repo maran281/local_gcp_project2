@@ -1,5 +1,12 @@
 #  # main declarations of the environment. #
 
+######################## Access SA key ########################
+provider "google" {
+    project = var.gcp_project
+    region = var.gcp_region
+    credentials = file("./cla-poc-key.json")
+} 
+
 ######################### Bucket Creation #########################
 resource "google_storage_bucket" "inbound-bucket" {
   project       = var.gcp_project
@@ -32,6 +39,7 @@ resource "google_storage_bucket" "errored-bucket" {
   versioning {
     enabled = true
   }
+  #member        = "cla-serviceaccount-manoj1@macro-deck-357611.iam.gserviceaccount.com"
 }
 
 # resource "google_storage_bucket" "fn-bucket" {
