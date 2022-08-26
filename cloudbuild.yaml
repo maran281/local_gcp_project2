@@ -1,8 +1,8 @@
 steps:
   - id: 'tf plan'
-    name: 'hashicorp/terraform:1.2.6'
+    name: 'hashicorp/terraform:1.0.0'
     entrypoint: 'sh'
-    dir: "/terraform"
+    #dir: "/terraform"
     args: 
       - '-c'
       - |
