@@ -2,7 +2,7 @@ steps:
   - id: 'tf plan'
     name: 'hashicorp/terraform:1.0.0'
     entrypoint: 'sh'
-    dir: "/terraform/"
+    # dir: "/terraform/"
     args: 
       - '-c'
       - |
@@ -12,5 +12,5 @@ steps:
           terraform plan
           echo "run apply"
           terraform apply -auto-approve
-# options:
-#   logging: CLOUD_LOGGING_ONLY
+options:
+  logging: CLOUD_LOGGING_ONLY
