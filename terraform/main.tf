@@ -46,6 +46,28 @@ resource "google_storage_bucket" "errored-bucket" {
   # service_account_email = "cla-serviceaccount-manoj1@macro-deck-357611.iam.gserviceaccount.com"
 }
 
+data "archive_file" "data_backup" {
+  type        = "zip"
+  source_dir = "source/"
+  output_path = "source/source.zip"
+}
+
+# resource "null_resource" "upload" {
+#   provisioner "file" {
+#     source      = data.archive_file.data_backup.output_path
+#     # destination = "/home/${var.user}/${data.archive_file.data_backup.output_path}"
+#     destination = "/home/${var.user}/${data.archive_file.data_backup.output_path}"
+
+#     connection {
+#       type     = "ssh"
+#       user     = var.user
+#       password = var.password
+#       host     = var.host
+#     }
+#   }
+# }
+
+
 # resource "google_storage_bucket" "fn-bucket" {
 #   name     = "fn-code-bucket"
 #   location = var.gcp_region
