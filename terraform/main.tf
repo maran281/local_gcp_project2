@@ -49,7 +49,7 @@ resource "google_storage_bucket" "errored-bucket" {
 data "archive_file" "data_backup" {
   type        = "zip"
   source_dir = "source/"
-  output_path = "source/source.zip"
+  output_path = "source/source1.zip"
 }
 
 # resource "null_resource" "upload" {
