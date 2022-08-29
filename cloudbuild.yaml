@@ -2,8 +2,8 @@ steps:
   - id: 'tf plan'
     name: 'hashicorp/terraform:1.2.6'
     entrypoint: 'sh'
-    # dir: "terraform/"
-    dir: "local_gcp_project3/"
+    # dir: "terraform/" 
+    dir: "/terraform/" 
     args: 
       - '-c'
       - |
