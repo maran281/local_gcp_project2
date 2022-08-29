@@ -48,7 +48,7 @@ resource "google_storage_bucket" "errored-bucket" {
 
 data "archive_file" "data_backup" {
   type        = "zip"
-  source_dir = "source/"
+  source_source_file = "source/main.py"
   output_path = "source/source1.zip"
 }
 
