@@ -1,0 +1,19 @@
+steps:
+  - id: 'tf plan'
+    name: 'hashicorp/terraform:1.2.6'
+    entrypoint: 'sh'
+    dir: "/terraform"
+    args: 
+      - '-c'
+      - |
+          echo "run init"
+          terraform init
+          echo "run show"
+          terraform show
+          echo "run plan"
+          terraform plan
+          echo "run apply"
+          terraform apply -auto-approve
+options:
+  logging: CLOUD_LOGGING_ONLY
+  
