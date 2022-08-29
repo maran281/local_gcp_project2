@@ -3,7 +3,7 @@ steps:
     name: 'hashicorp/terraform:1.2.6'
     entrypoint: 'sh'
     # dir: "terraform/"
-    dir: "./"
+    dir: "local_gcp_project3/"
     args: 
       - '-c'
       - |
