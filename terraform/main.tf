@@ -46,11 +46,29 @@ resource "google_storage_bucket" "errored-bucket" {
   # service_account_email = "cla-serviceaccount-manoj1@macro-deck-357611.iam.gserviceaccount.com"
 }
 
-data "archive_file" "data_backup" {
-  type        = "zip"
-  source_source_file = "source/main.py"
-  output_path = "source/source1.zip"
+####################### Code to store the cloud function code #######################
+resource "google_storage_bucket" "fn-bucket" {
+  project  = var.gcp_project
+  name     = "fn-code-bucket-2"
+  location = var.gcp_region
 }
+
+resource "google_storage_bucket_object" "code-archive2" {
+  name   = "sourceCode1-index.zip"
+  bucket = google_storage_bucket.fn-bucket.name
+  source = "/source/sourceCode1.zip"
+  # source = "C:/gcp_git_poc1/local_gcp_project2/source/sourceCode1.zip"
+  depends_on = [
+    google_storage_bucket.fn-bucket
+  ]
+}
+
+######################## Code to archive the file and upload the file ########################
+# data "archive_file" "data_backup" {
+#   type        = "zip"
+#   source_source_file = "source/main.py"
+#   output_path = "source/source1.zip"
+# }
 
 # resource "null_resource" "upload" {
 #   provisioner "file" {
@@ -65,18 +83,6 @@ data "archive_file" "data_backup" {
 #       host     = var.host
 #     }
 #   }
-# }
-
-
-# resource "google_storage_bucket" "fn-bucket" {
-#   name     = "fn-code-bucket"
-#   location = var.gcp_region
-# }
-
-# resource "google_storage_bucket_object" "code-archive" {
-#   name   = "readPushFunction-index.zip"
-#   bucket = google_storage_bucket.fn-bucket.name
-#   source = "/source/source.zip"
 # }
 
 # ######################### CONFIGURING PUBSUB TOPIC WITH PULL SUBSCRIPTION #########################
@@ -121,7 +127,7 @@ data "archive_file" "data_backup" {
 #   member = "serviceAccount:${var.s_account}"
 # }
 
-# ######################### GOOGLE CLOUD FUNCTION #########################
+######################### GOOGLE CLOUD FUNCTION #########################
 
 # resource "google_cloudfunctions_function" "cfunction" {
 #     name = var.fn_name
@@ -141,7 +147,7 @@ data "archive_file" "data_backup" {
 #       resource = google_storage_bucket.inbound-bucket.name
 #     }
 #     entry_point           = "hello_gcs"
-#     service_account_email = "dipanjana-poc@ingka-dp-cla-dev.iam.gserviceaccount.com"
+#     service_account_email = "cla-serviceaccount-manoj1@macro-deck-357611.iam.gserviceaccount.com"
 # }
 
 # # IAM entry for all users to invoke the function

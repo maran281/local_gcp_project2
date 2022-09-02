@@ -7,7 +7,7 @@
     # source_archive_bucket = 
     # source_archive_object = 
 
-# fn_name = "cla-function-test_m1"
+# fn_name = "cla-terraform-function-test_m1"
 # fn_runtime = "python310"
 # fn_available_memory_mb = "256" 
 gcp_project   = "macro-deck-357611"
